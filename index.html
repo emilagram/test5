@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Türkçe Konuşma Kulübü · İkonik Kafe</title>
+<style>
+:root{--red:#b5122b;--red2:#7d071b;--ink:#1d2433;--muted:#6d7482;--purple:#5542d6;--line:#e7e9f0}
+*{box-sizing:border-box}body{margin:0;background:#f5f6fa;color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+body:before{content:"TÜRKÇE KONUŞMA KULÜBÜ";position:fixed;inset:0;display:grid;place-items:center;z-index:-1;background:linear-gradient(135deg,#fff,#fff8f8);color:rgba(181,18,43,.055);font-size:clamp(34px,8vw,100px);font-weight:900;text-align:center;line-height:1.15;transform:rotate(-22deg);pointer-events:none}
+main{max-width:960px;margin:auto;padding:22px 15px 48px}.hero{position:relative;overflow:hidden;border-radius:25px;padding:30px;background:linear-gradient(130deg,var(--red2),var(--red),#e13b4d);color:#fff;box-shadow:0 18px 44px #9b102b30}
+.hero:after{content:"Türkçe konuşma kulübü";position:absolute;right:-12px;bottom:-28px;font-size:clamp(20px,4vw,45px);font-weight:900;color:#ffffff12;transform:rotate(-10deg);white-space:nowrap}
+.hero h1{margin:0 auto;font-size:clamp(28px,5.5vw,46px);line-height:1.12;letter-spacing:.3px;text-align:center;text-wrap:balance;text-shadow:0 3px 18px #4a001c55;max-width:760px}.hero h1:after{content:"";display:block;width:76px;height:5px;border-radius:9px;background:#ffffffc9;margin:17px auto 0}.hero .date{font-weight:800;font-size:17px;margin:14px 0 8px}.hero p{margin:8px 0;color:#fff1f2}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:18px;box-shadow:0 8px 28px #1d243308}
+h2{font-size:22px;margin:0 0 12px}h3{font-size:18px;margin:16px 0 8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label.field{display:block;font-weight:700;margin:12px 0 6px}input[type=text],select{width:100%;border:1px solid #d7dae4;border-radius:12px;padding:12px;font:inherit;background:#fff}
+.small{font-size:14px;color:var(--muted)}.instructions{background:#fff4f4;border-left:4px solid var(--red);border-radius:10px;padding:13px 15px}
+.progress{font-size:13px;font-weight:800;background:#f0efff;color:#4334b0;border-radius:100px;padding:6px 11px}
+.q{padding:17px 0;border-bottom:1px solid var(--line)}.q:last-child{border:0}.qtitle{font-weight:750}.choices{display:grid;gap:8px;margin-top:11px}
+.choice{display:flex;gap:10px;align-items:flex-start;border:1px solid #e6e8ef;border-radius:12px;padding:11px 12px;cursor:pointer;font-weight:500;transition:.15s}
+.choice:has(input:checked){background:#f3f1ff;border-color:var(--purple)}.choice input{margin-top:5px;accent-color:var(--purple)}
+button{border:0;border-radius:13px;padding:13px 15px;font:750 14px/1.35 system-ui;cursor:pointer;transition:transform .15s,filter .15s}button:hover{transform:translateY(-1px);filter:brightness(.98)}
+.btn-main{background:var(--purple);color:#fff}.btn-red{background:var(--red);color:#fff}.btn-soft{background:#f0efff;color:#382ba2}.btn-light{background:#fff0f1;color:#a00c25}
+.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}\n.levelbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}\n.leveltag{font-weight:850;padding:7px 13px;border-radius:999px;background:#f0efff;color:#4334b0}\n.next-level{display:none;width:100%;min-height:76px;margin:22px 0 8px;color:#fff;background:linear-gradient(120deg,#087f5b,#16a875,#35d39b);font-size:clamp(18px,3.4vw,23px);font-weight:900;letter-spacing:.2px;padding:22px 20px;border-radius:20px;box-shadow:0 12px 30px #138a6645;border:2px solid #ffffffaa;text-shadow:0 1px 2px #064b35;position:relative;overflow:hidden;animation:nextLevelPulse 2.2s ease-in-out infinite}
+.next-level:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,#ffffff30 50%,transparent 75%);transform:translateX(-120%);animation:nextLevelShine 3.4s ease-in-out infinite;pointer-events:none}
+.next-level.level-3{background:linear-gradient(120deg,#075d9a,#0d9fd0,#45c9ed);box-shadow:0 12px 30px #0d76b845}
+.next-level.level-4{background:linear-gradient(120deg,#b84c05,#e88713,#ffc247);box-shadow:0 12px 30px #d66b1145}
+.next-level:focus-visible{outline:4px solid #242047;outline-offset:4px}
+.next-level:disabled{opacity:.55;cursor:not-allowed;animation:none}
+@keyframes nextLevelPulse{0%,100%{transform:scale(1);box-shadow:0 12px 30px #138a6640}50%{transform:scale(1.012);box-shadow:0 16px 38px #138a6670}}
+@keyframes nextLevelShine{0%,65%,100%{transform:translateX(-120%)}85%{transform:translateX(120%)}}
+@media(prefers-reduced-motion:reduce){.next-level,.next-level:before{animation:none}}
+.result{display:none;margin-top:17px;border:1px solid #d8d1ff;background:#f7f5ff;padding:18px;border-radius:16px}.score{font-size:34px;font-weight:900;color:var(--purple)}
+details{margin-top:16px}summary{cursor:pointer;font-weight:800}.words{columns:2;column-gap:25px;margin-top:12px}.words div{break-inside:avoid;font-size:14px;padding:3px 0}
+footer{text-align:center;padding:22px 8px;color:#737987;font-size:13px}
+
+.vocab-top-button{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;margin:18px 0 0;padding:18px 20px;border-radius:999px;color:#fff;background:linear-gradient(120deg,#6b35c7,#a34de0,#e34e8b);font-size:clamp(15px,2.7vw,20px);font-weight:900;letter-spacing:.25px;box-shadow:0 10px 28px #8d3bc740;border:2px solid #ffffff55;animation:vocabPulse 2.8s ease-in-out infinite}
+.vocab-top-button span{font-size:16px;transition:transform .2s}.vocab-translation{margin:8px 0 0;text-align:center;color:#fff;font-size:14px;font-weight:650;opacity:.96}.vocab-top-button[aria-expanded="true"] span{transform:rotate(180deg)}
+@keyframes vocabPulse{0%,100%{box-shadow:0 10px 28px #8d3bc740}50%{box-shadow:0 12px 34px #d64d9a70}}
+.vocab-panel{margin-top:14px;background:linear-gradient(135deg,#fff,#fff8fd);border:1px solid #ecd7f3;border-radius:22px;padding:20px;box-shadow:0 12px 30px #752b9412}
+.vocab-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.vocab-panel-head h2{margin:0;color:#6b35c7}
+.vocab-close{width:40px;height:40px;padding:0;border-radius:50%;background:#f3e6fa;color:#7136a3;font-size:20px}
+.vocab-inline{display:flex;flex-wrap:wrap;align-items:center;gap:8px 5px;margin-top:15px;line-height:2}
+.vocab-term{display:inline;color:var(--term-color);font-weight:800;font-size:15px;white-space:normal}
+.vocab-term .dash{color:#9ca3af;font-weight:500;padding:0 3px}
+.vocab-term .comma{color:#9ca3af;margin-left:3px}
+@media(max-width:640px){.vocab-top-button{border-radius:20px;padding:16px 13px}.vocab-panel{padding:15px}.vocab-term{font-size:14px}}
+
+@media(max-width:640px){.grid,.btnrow{grid-template-columns:1fr}.hero{padding:24px 20px}.card{padding:17px}.words{columns:1}}
+</style></head><body><main>
+<header class="hero">
+<h1>Türkçe Konuşma Kulübü<br>İkonik Kafe</h1>
+<div class="date">ВТОРНИК · 24 НОЯБРЯ 2026</div>
+<p><strong>3-Й УРОК — ИГРА В СЛОВА: ТЕСТ</strong></p>
+<p>Emille Türkçe Konuşma Kulübü · İkonik Kafe</p>
+<button class="vocab-top-button" id="openWords" type="button" aria-expanded="false">📚 BUGÜN OYUNDA İŞLEDİĞİMİZ KELİMELER <span>▼</span></button><p class="vocab-translation">Слова, которые мы изучали сегодня в игре</p>
+</header>
+<section class="vocab-panel" id="vocabPanel" hidden>
+  <div class="vocab-panel-head"><h2>Bugün oyunda işlediğimiz kelimeler</h2><button class="vocab-close" id="closeWords" type="button" aria-label="Kapat">✕</button></div>
+  <p class="small">Kelime listesi karışık sırada gösterilir. / Слова показаны в случайном порядке.</p>
+  <div class="vocab-inline" id="vocabInline"></div>
+</section>
+<section class="card">
+<h2>Önce kendini tanıt / Сначала представься</h2>
+<div class="grid">
+<div><label class="field" for="name">Adın / Имя</label><input id="name" type="text" placeholder="Имя / Ad"></div>
+<div><label class="field" for="surname">Soyadın / Фамилия</label><input id="surname" type="text" placeholder="Фамилия / Soyad"></div>
+<div><label class="field" for="attend">24.11.2026 tarihinde kulübümüze katıldın mı? / Ты был(а) на встрече клуба 24.11.2026?</label><select id="attend"><option value="">Seç / Выбери</option><option>Да / Evet</option><option>Нет / Hayır</option></select></div>
+<div><label class="field" for="liked">Kulübümüzü beğendin mi? / Тебе понравился наш клуб?</label><select id="liked"><option value="">Seç / Выбери</option><option>Очень понравился / Çok beğendim</option><option>Понравился / Beğendim</option><option>Немного / Biraz</option><option>Пока не участвовал(а) / Henüz katılmadım</option></select></div>
+</div>
+<div class="instructions"><strong>ЛЁГКИЙ ТЕСТ ПО СЛОВАМ И ПРОСТЫМ ФРАЗАМ</strong><br>Решайте внимательно. Ответьте на все вопросы и в конце нажмите кнопку WhatsApp, чтобы отправить свои ответы Эмилю или в группу клуба. 😊</div>
+</section>
+<section class="card">
+<div class="levelbar"><h2 id="levelTitle">Test 1 / Тест 1</h2><span class="progress" id="progress">0 / 20</span></div><div class="leveltag" id="levelTag">Уровень 1 · 20 вопросов</div>
+<p class="small">Testler kolaydan biraz daha zora doğru ilerler; genel seviye başlangıç için çok kolaydır. / Тесты постепенно усложняются, но в целом остаются очень лёгкими.</p>
+<form id="quiz"></form>
+<button class="btn-main" id="finish" type="button">Testi bitir / Завершить тест</button><button class="next-level" id="nextStage" type="button">Следующий уровень — 10 новых вопросов →</button>
+<div class="result" id="result" aria-live="polite"></div>
+<div class="btnrow">
+<button class="btn-red" id="sendEmil" type="button">Sonuçları Emil'e gönder / Отправить Эмилю</button>
+<button class="btn-soft" id="sendGroup" type="button">Sonuçları İkonik kulübüne gönder / Отправить в клуб</button>
+<button class="btn-light" id="retry" type="button">Testi tekrar yap / Пройти тест ещё раз</button>
+<button class="btn-soft" id="showWrong" type="button">Yanlışlarımı gör / Посмотреть ошибки</button>
+</div>
+<div class="result" id="wrongBox"></div>
+<p class="small">WhatsApp откроется с подготовленным общим отчётом. Эмилю сообщение откроется напрямую; для группы выбери чат клуба в WhatsApp и отправь. Отправляются только правильные/неправильные количества по каждому завершённому тесту, а также ответы анкеты.</p>
+<details><summary>Kelime listesi / Список слов (169)</summary><div class="words" id="wordList"></div></details>
+</section>
+<footer>Emille Türkçe Konuşma Kulübü · İkonik Kafe 🇹🇷</footer>
+</main>
+<script>
+
+
+
+const words = [["Köy","Деревня"],["Kasa","Касса"],["Anne","Мама"],["Emekçi","Трудящийся"],["İnek","Корова"],["Kolay","Лёгкий"],["Yabancı","Иностранец"],["Islak","Мокрый"],["Kıymetli","Ценный"],["İskele","Причал"],["Eş","Супруг / пара"],["Şube","Филиал"],["Elma","Яблоко"],["Abla","Старшая сестра"],["Ayran","Айран"],["Nar","Гранат"],["Rüzgâr","Ветер"],["Rüya","Сон / мечта"],["Anten","Антенна"],["Nakit","Наличные"],["Taze","Свежий"],["El","Рука"],["Lütfen","Пожалуйста"],["Noter","Нотариус"],["Rahat","Спокойный / удобный"],["Tatlı","Сладкий"],["Iğdır","Ыгдыр"],["Ramazan","Рамадан"],["Nerede","Где?"],["Ev","Дом"],["Vergi","Налог"],["İyi","Хороший"],["İki","Два"],["İlaç","Лекарство"],["Çanta","Сумка"],["Ayva","Айва"],["Aşk","Любовь"],["Kısa","Короткий"],["Avize","Люстра"],["Eski","Старый"],["İncir","Инжир"],["Resim","Картина / фотография"],["Mutlu","Счастливый"],["Uyumak","Спать"],["Kesinlikle","Обязательно"],["Eldiven","Перчатка"],["Neyse","Ну что ж"],["Ekmek","Хлеб"],["Kırk","Сорок"],["Kadın","Женщина"],["Nokta","Точка"],["Alışveriş","Покупки"],["Şirin","Милый"],["Nötr","Нейтральный"],["Rıza","Согласие / имя Рыза"],["Askı","Вешалка"],["Israr","Настойчивость"],["Rahat","Спокойный"],["Taraf","Сторона"],["Fil","Слон"],["Lale","Тюльпан"],["Esrar","Тайна"],["Ruh","Душа"],["Hilal","Полумесяц"],["Lazım","Необходимый"],["Mavi","Синий"],["İp","Верёвка"],["Pelikan","Пеликан"],["Nohut","Нут"],["Tekerlek","Колесо"],["Kişi","Человек"],["İmza","Подпись"],["Ak","Белый"],["Kumaş","Ткань"],["Şimşek","Молния"],["Kar","Снег"],["Ranza","Двухъярусная кровать"],["Ateş","Огонь"],["Şahin","Сокол"],["Nargile","Кальян"],["Ezber","Заучивание"],["Reyhan","Рейхан"],["Not","Заметка"],["Tuz","Соль"],["Zengin","Богатый"],["Nostalji","Ностальгия"],["İran","Иран"],["Nahçıvan","Нахчыван"],["Narin","Изящный"],["Ney","Флейта"],["Yıkık","Разрушенный"],["Karınca","Муравей"],["Azerbaycan","Азербайджан"],["Nasıl","Как?"],["Lokma","Лукум"],["Asker","Солдат"],["Rejim","Режим"],["Mor","Фиолетовый"],["Rica","Просьба"],["Acayip","Необычный"],["Pilav","Плов"],["Vücut","Тело"],["Tıpa","Пробка"],["Armut","Груша"],["Tepki","Реакция"],["İştirak","Участие"],["Kapitalizm","Капитализм"],["Mana","Смысл"],["Ay","Луна"],["Yıldız","Звезда"],["Ziyaret","Посещение"],["Tek","Единственный"],["Kilise","Церковь"],["Emlak","Недвижимость"],["Kabus","Кошмар"],["Son","Конец"],["Nasır","Мозоль"],["Roka","Руккола"],["Ağaç","Дерево"],["Çavdar","Рожь"],["Ressam","Художник"],["Melankolik","Меланхоличный"],["Kötü","Плохой"],["Ürkek","Робкий"],["Kestane","Каштан"],["Etkinlik","Мероприятие"],["Kıskançlık","Ревность"],["Kum","Песок"],["Manzara","Пейзаж"],["At","Лошадь"],["Tüm","Весь / всё"],["Melek","Ангел"],["Kaçmak","Убегать"],["Kıyma","Фарш"],["Anne","Мама"],["Element","Элемент"],["Toz","Пыль"],["Zakkum","Олеандр"],["Mendil","Платок"],["Limonata","Лимонад"],["Ayrılık","Разлука"],["Kış","Зима"],["Şarkı","Песня"],["Ilık","Тёплый"],["Kayısı","Абрикос"],["Işık","Свет"],["Kekik","Тимьян"],["Kemik","Кость"],["Kat","Этаж"],["Tane","Штука"],["Efsane","Легенда"],["Eviye","Кухонная мойка"],["Eşofman","Спортивный костюм"],["Norveç","Норвегия"],["Çevre","Окружающая среда"],["Erkek","Мужчина"],["Kasım","Ноябрь"],["Muafiyet","Освобождение от обязанности"],["Temas","Контакт"],["Sessiz","Тихий"],["Zımpara","Наждачная бумага"],["Ayna","Зеркало"],["Adam","Мужчина"],["Mütevazı","Скромный"],["Ispanak","Шпинат"],["Kostüm","Костюм"],["Mutfak","Кухня"],["Kahraman","Герой"],["Nakarat","Припев"]];
+const quiz = document.getElementById('quiz');
+let current=[], answers={}, submitted=false, stage=1, retryMode=false;
+const RESULTS_KEY='ikonik_turkce_club_results_24112026_v2';
+let completedResults={};
+try{completedResults=JSON.parse(localStorage.getItem(RESULTS_KEY)||'{}')||{};}catch(e){completedResults={};}
+function persistResults(){try{localStorage.setItem(RESULTS_KEY,JSON.stringify(completedResults));}catch(e){}}
+
+const usedWords = new Set();
+const shuffle = arr => { const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const uniquePairs=words.filter((pair,i,arr)=>pair[0]&&pair[1]&&arr.findIndex(x=>x[0]===pair[0]&&x[1]===pair[1])===i);
+const translationsTR=uniquePairs.map(([tr,ru])=>({kind:'tr',tr,ru,word:tr,key:'tr:'+tr}));
+const translationsRU=uniquePairs.map(([tr,ru])=>({kind:'ru',tr,ru,word:tr,key:'ru:'+tr}));
+function makeQuestion(question,correct,distractors,explanation,key='',word=''){
+ const choices=shuffle([correct,...distractors.filter(x=>x!==correct).slice(0,2)]);
+ return {q:question,opts:choices,a:choices.indexOf(correct),exp:explanation||correct,key,word};
+}
+function distractorsFor(answer,list,field){return shuffle([...new Set(list.map(x=>x[field]).filter(x=>x&&x!==answer))]).slice(0,2);}
+const vocabTR=translationsTR.map(x=>makeQuestion(`«${x.tr}» ne demek? / Что значит «${x.tr}»?`,x.ru,distractorsFor(x.ru,translationsTR,'ru'),`${x.tr} — ${x.ru}`,x.key,x.word));
+const vocabRU=translationsRU.map(x=>makeQuestion(`Как по-турецки «${x.ru}»? / «${x.ru}» Türkçede nasıl?`,x.tr,distractorsFor(x.tr,translationsRU,'tr'),`${x.ru} — ${x.tr}`,x.key,x.word));
+const simple=[
+ ["Boşluğu doldur: «Ben ___». / «Я дома».","evde",["mutlu","elma"],"Ben evde. — Я дома."],
+ ["«İki» kaç demek? / Сколько значит «İki»?","2",["3","4"],"İki — два."],
+ ["«Mavi» hangi renk? / Какой цвет «Mavi»?","Синий",["Красный","Белый"],"Mavi — синий."],
+ ["«Nerede?» ne demek? / Что значит «Nerede?»?","Где?",["Когда?","Почему?"],"Nerede? — Где?"],
+ ["«Lütfen» ne demek? / Что значит «Lütfen»?","Пожалуйста",["Спасибо","Привет"],"Lütfen — пожалуйста."],
+ ["«Anne» kim? / Кто такая «Anne»?","Мама",["Папа","Бабушка"],"Anne — мама."],
+ ["«Ekmek» nedir? / Что такое «Ekmek»?","Хлеб",["Молоко","Сыр"],"Ekmek — хлеб."],
+ ["«Elma» nedir? / Что такое «Elma»?","Яблоко",["Груша","Банан"],"Elma — яблоко."],
+ ["«İnek» hangi hayvan? / Какое животное «İnek»?","Корова",["Лошадь","Кошка"],"İnek — корова."],
+ ["«Kış» hangi mevsim? / Какое время года «Kış»?","Зима",["Лето","Весна"],"Kış — зима."],
+ ["«Mutlu» ne demek? / Что значит «Mutlu»?","Счастливый",["Грустный","Уставший"],"Mutlu — счастливый."],
+ ["«Uyumak» ne demek? / Что значит «Uyumak»?","Спать",["Бежать","Читать"],"Uyumak — спать."],
+ ["«Kadın» ne demek? / Что значит «Kadın»?","Женщина",["Мужчина","Ребёнок"],"Kadın — женщина."],
+ ["«Nakit» ne demek? / Что значит «Nakit»?","Наличные",["Карта","Чек"],"Nakit — наличные."],
+ ["«Taze» ne demek? / Что значит «Taze»?","Свежий",["Старый","Грязный"],"Taze — свежий."],
+ ["«Köy» ne demek? / Что значит «Köy»?","Деревня",["Город","Улица"],"Köy — деревня."],
+ ["«Çanta» ne demek? / Что значит «Çanta»?","Сумка",["Книга","Стол"],"Çanta — сумка."],
+ ["«İlaç» ne demek? / Что значит «İlaç»?","Лекарство",["Одежда","Еда"],"İlaç — лекарство."],
+ ["«Rahat» ne demek? / Что значит «Rahat»?","Спокойный / удобный",["Трудный","Горячий"],"Rahat — спокойный / удобный."],
+ ["«Alışveriş» ne demek? / Что значит «Alışveriş»?","Покупки",["Путешествие","Работа"],"Alışveriş — покупки."]
+].map(([q,a,d,e],i)=>makeQuestion(q,a,d,e,'simple:'+i,''));
+const bank=[...vocabTR,...vocabRU,...simple];
+function initialSet(){return [...shuffle(vocabTR).slice(0,10),...shuffle(vocabRU).slice(0,5),...shuffle(simple).slice(0,5)];}
+function markUsed(list){list.forEach(q=>{if(q.word)usedWords.add(q.word);});}
+function buildExtraStage(level){
+ const available=shuffle(uniquePairs.filter(([tr])=>!usedWords.has(tr)));
+ const selected=available.slice(0,10);
+ const questions=selected.map(([tr,ru],i)=>{
+  const trItem={tr,ru,word:tr};
+  let q;
+  if(level===2){
+   q=makeQuestion(`Выбери правильный перевод слова «${tr}». / «${tr}» sözünün doğru mənasını seç.`,ru,distractorsFor(ru,translationsTR,'ru'),`${tr} — ${ru}`,'extra'+level+':'+tr,tr);
+  }else if(level===3){
+   q=makeQuestion(`Какое турецкое слово означает «${ru}»? / «${ru}» hansı türkçə sözdür?`,tr,distractorsFor(tr,translationsRU,'tr'),`${ru} — ${tr}`,'extra'+level+':'+tr,tr);
+  }else{
+   const direction=i%2;
+   q=direction===0
+    ?makeQuestion(`Что означает турецкое слово «${tr}»? / «${tr}» nə deməkdir?`,ru,distractorsFor(ru,translationsTR,'ru'),`${tr} — ${ru}`,'extra'+level+':'+tr,tr)
+    :makeQuestion(`«${ru}» Türkçede nasıl söylenir? / Как сказать «${ru}» по-турецки?`,tr,distractorsFor(tr,translationsRU,'tr'),`${ru} — ${tr}`,'extra'+level+':'+tr,tr);
+  }
+  return q;
+ });
+ markUsed(questions);return questions;
+}
+function stageLabel(){return stage===1?'Уровень 1 · 20 вопросов':`Уровень ${stage} · 10 новых вопросов`;}
+function startStage(level,source=null){
+ stage=level;retryMode=!!source;
+ current=source?shuffle(source):level===1?shuffle(initialSet()):buildExtraStage(level);
+ if(level===1)markUsed(current);
+ answers={};submitted=false;quiz.innerHTML='';
+ document.getElementById('levelTitle').textContent=level===1?'Test 1 / Тест 1':`Test ${level} / Тест ${level}`;
+ document.getElementById('levelTag').textContent=stageLabel();
+ document.getElementById('progress').textContent='0 / '+current.length;
+ const next=document.getElementById('nextStage');next.style.display='none';next.className='next-level'+(level===3?' level-3':level===4?' level-4':'');
+ document.getElementById('finish').style.display='inline-block';
+ current.forEach((q,i)=>{
+  const section=document.createElement('section');section.className='q';
+  const title=document.createElement('div');title.className='qtitle';title.textContent=`${i+1}. ${q.q}`;section.appendChild(title);
+  const choices=document.createElement('div');choices.className='choices';
+  q.opts.forEach((opt,j)=>{
+   const label=document.createElement('label');label.className='choice';
+   const radio=document.createElement('input');radio.type='radio';radio.name='question'+i;radio.value=j;
+   radio.addEventListener('change',()=>{answers[i]=j;updateProgress();});
+   const span=document.createElement('span');span.textContent=opt;label.append(radio,span);choices.appendChild(label);
+  });
+  section.appendChild(choices);quiz.appendChild(section);
+ });
+ document.getElementById('result').style.display='none';document.getElementById('wrongBox').style.display='none';
+ updateProgress();
+}
+function updateProgress(){document.getElementById('progress').textContent=Object.keys(answers).length+' / '+current.length;}
+function info(){return `Имя и фамилия: ${document.getElementById('name').value.trim()} ${document.getElementById('surname').value.trim()}
+Участие в клубе: ${document.getElementById('attend').value||'не указано'}
+Понравился клуб: ${document.getElementById('liked').value||'не указано'}`;}
+function getScore(){return current.reduce((sum,q,i)=>sum+(answers[i]===q.a?1:0),0);}
+function wrongItems(){return current.map((q,i)=>({q,i})).filter(x=>answers[x.i]!==x.q.a);}
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function finish(){
+ submitted=true;const score=getScore(),wrong=current.length-score,res=document.getElementById('result');res.style.display='block';
+ const feedback=score>=Math.ceil(current.length*.85)?'Отлично! Прекрасный результат! 🎉':score>=Math.ceil(current.length*.55)?'Очень хорошо! Продолжай в том же духе!':'Попробуем ещё раз — у тебя получится!';
+ completedResults[String(stage)]={stage,total:current.length,correct:score,wrong,completedAt:new Date().toISOString()};
+ persistResults();
+ res.innerHTML=`<div class="score">${score} / ${current.length}</div><strong>${feedback}</strong><p>${escapeHTML(info()).replace(/\\n/g,'<br>')}</p><p class="small">Tamamlanan testler: ${Object.keys(completedResults).length} / 4 · WhatsApp ile tüm sonuçlar birlikte gönderilebilir.</p>`;
+ document.getElementById('finish').style.display='none';
+ if(stage<4){
+  const next=document.getElementById('nextStage');next.style.display='block';
+  next.textContent=`Уровень ${stage+1} — 10 новых вопросов →`;
+ }
+}
+function message(){
+ const name=document.getElementById('name').value.trim();
+ const surname=document.getElementById('surname').value.trim();
+ const attend=document.getElementById('attend').value||'Не указано';
+ const liked=document.getElementById('liked').value||'Не указано';
+ const rows=Object.keys(completedResults).map(Number).sort((a,b)=>a-b).map(n=>{
+  const r=completedResults[String(n)];
+  return `Тест ${r.stage}: правильно — ${r.correct}, неправильно — ${r.wrong}`;
+ });
+ return `РЕЗУЛЬТАТЫ · Türkçe Konuşma Kulübü · İkonik Kafe
+Дата встречи: 24.11.2026
+
+Ad: ${name||'Belirtilmedi'}
+Soyad: ${surname||'Belirtilmedi'}
+24.11.2026 tarihinde kulübe katılım: ${attend}
+Kulüp hakkındaki görüş: ${liked}
+
+TEST SONUÇLARI
+${rows.length?rows.join('\\n'):'Henüz tamamlanmış test yok.'}
+
+Tamamlanan test: ${rows.length} / 4
+`;
+}
+function openWhatsApp(url,text){window.open(url+'?text='+encodeURIComponent(text),'_blank');}
+document.getElementById('finish').addEventListener('click',finish);
+document.getElementById('nextStage').addEventListener('click',()=>{
+ if(stage<4){
+  startStage(stage+1);
+  requestAnimationFrame(()=>document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'}));
+ }
+});
+document.getElementById('sendEmil').addEventListener('click',()=>{if(!submitted)finish();openWhatsApp('https://wa.me/905078997409',message());});
+document.getElementById('sendGroup').addEventListener('click',()=>{if(!submitted)finish();openWhatsApp('https://wa.me/',message());});
+document.getElementById('retry').addEventListener('click',()=>{const wrong=wrongItems().map(x=>x.q);startStage(stage,wrong.length?wrong:current);document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});});
+document.getElementById('showWrong').addEventListener('click',()=>{
+ const box=document.getElementById('wrongBox');box.style.display='block';const wrong=wrongItems();
+ if(!wrong.length){box.innerHTML='<h3>Все ответы правильные! Отличная работа! 🎉</h3>';return;}
+ box.innerHTML='<h3>Неправильные ответы</h3>'+wrong.map(({q,i})=>`<p><strong>${i+1}. ${escapeHTML(q.q)}</strong><br>Твой ответ: ${escapeHTML(answers[i]===undefined?'—':q.opts[answers[i]])}<br><span style="color:#237a48;font-weight:800">Правильный ответ: ${escapeHTML(q.opts[q.a])}<br>${escapeHTML(q.exp)}</span></p>`).join('');
+});
+const list=document.getElementById('wordList');words.forEach(([tr,ru],i)=>{const div=document.createElement('div');div.textContent=`${i+1}. ${tr} — ${ru}`;list.appendChild(div);});
+
+const openWords=document.getElementById('openWords'),vocabPanel=document.getElementById('vocabPanel');
+const vocabInline=document.getElementById('vocabInline');
+const termColors=['#c026d3','#2563eb','#ea580c','#059669','#be123c','#7c3aed','#0f766e','#b45309','#db2777','#4f46e5'];
+function showWordList(){
+ const mixed=shuffle(words);
+ vocabInline.innerHTML='';
+ mixed.forEach(([tr,ru],i)=>{
+  const span=document.createElement('span');span.className='vocab-term';span.style.setProperty('--term-color',termColors[i%termColors.length]);
+  span.textContent=`${tr} — ${ru}`;
+  const comma=document.createElement('span');comma.className='comma';comma.textContent=i===mixed.length-1?'':', ';
+  span.appendChild(comma);vocabInline.appendChild(span);
+ });
+}
+openWords.addEventListener('click',()=>{
+ const opening=vocabPanel.hidden;
+ vocabPanel.hidden=!opening;openWords.setAttribute('aria-expanded',String(opening));
+ if(opening){showWordList();vocabPanel.scrollIntoView({behavior:'smooth',block:'start'});}
+});
+document.getElementById('closeWords').addEventListener('click',()=>{
+ vocabPanel.hidden=true;openWords.setAttribute('aria-expanded','false');openWords.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+startStage(1);
+
+
+
+</script></body></html>
